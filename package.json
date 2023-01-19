@@ -1,0 +1,17 @@
+{
+  "name": "iniciando_com_nodejs",
+  "version": "1.0.0",
+  "description": "Treinamento de NodeJS com a Rocketseat CodeDrops",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheSamuelVitor/iniciando_com_nodejs.git"
+  },
+  "author": "Samuel Vitor",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TheSamuelVitor/iniciando_com_nodejs/issues"
+  },
+  "homepage": "https://github.com/TheSamuelVitor/iniciando_com_nodejs#readme"
+}
