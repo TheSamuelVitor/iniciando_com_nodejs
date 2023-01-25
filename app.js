@@ -1,7 +1,9 @@
-const { response } = require("express");
+const { response, json } = require("express");
 const express = require("express");
 
 const app = express();
+
+app.use(express.json());
 
 var produtos = [
   {
@@ -21,12 +23,6 @@ var produtos = [
     nome: "Casa",
   },
 ];
-
-app.get("/primeira-rota", (req, res) => {
-  return res.json({
-    message: "Acessou a primeira rota" 
-  })
-});
 
 app.get("/produtos", (req, res) => {
   res.statusCode = 201;
@@ -52,10 +48,15 @@ app.get("/produtos/:preco", (req, res) => {
 });
 
 app.post("/produtos", (req, res) => {
-  novoProduto = req.params;
+  var { nome, preco } = req.body;
 
-  console.log(novoProduto.preco);
-})
+  produtos.push({
+    nome,
+    preco,
+  });
+
+  return (res.statusCode = 200);
+});
 
 app.delete("/produto/:id", (req, res) => {
   var id = req.params.id;
