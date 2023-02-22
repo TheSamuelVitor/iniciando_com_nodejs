@@ -1,30 +1,28 @@
 const { response, json } = require("express");
 const express = require("express");
-// const { randomUUID } = require("crypto");
+const { randomUUID } = require("crypto");
 
 const app = express();
 
 app.use(express.json());
 
-var produtos = [
-  {
-    preco: 4,
-    nome: "Boneca",
-  },
-  {
-    preco: 40,
-    nome: "Carro",
-  },
-];
+var produtos = [];
 
 app.get("/produtos", (req, res) => {
-  res.statusCode = 201;
+  res.statusCode = 200;
   res.json(produtos);
 });
 
 app.get("/produto/:id", (req, res) => {
   var id = req.params.id;
-  res.json(produtos[id]);
+  console.log(produtos)
+  try {
+    res.json(produtos[id]);
+  } catch (error) {
+    res.json({
+      "message": error
+    })
+  }
 });
 
 app.get("/produtos/:preco", (req, res) => {
@@ -45,9 +43,9 @@ app.post("/produtos", (req, res) => {
   var { nome, preco } = req.body;
 
   var produto = {
+    id: randomUUID(),
     nome,
     preco,
-    id: randomUUID(),
   };
 
   produtos.push(produto);
