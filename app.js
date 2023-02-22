@@ -1,4 +1,5 @@
 const { response, json } = require("express");
+const fs = require("fs");
 const express = require("express");
 const { randomUUID } = require("crypto");
 
@@ -10,21 +11,15 @@ var produtos = [];
 
 // rota de retorno de todos os produtos existentes
 app.get("/produtos", (req, res) => {
-  res.statusCode = 200;
-  res.json(produtos);
+  res.status(200).json(produtos);
 });
 
 // rota de retorno de um produto com o id especifico
 app.get("/produto/:id", (req, res) => {
-  var id = req.params.id;
-  console.log(produtos)
-  try {
-    res.json(produtos[id]);
-  } catch (error) {
-    res.json({
-      "message": error
-    })
-  }
+  var { id } = req.params;
+  const productIndex = produtos.findIndex((produto) => produto.id === id);
+
+  res.json(produtos[productIndex]);
 });
 
 // rota de retorno de produtos filtrados pelo preco
@@ -43,13 +38,12 @@ app.get("/produtos/:preco", (req, res) => {
 
 // rota de adicionar produto
 app.post("/produtos", (req, res) => {
-  console.log("acessou essa rota");
   var { nome, preco } = req.body;
 
   var produto = {
     id: randomUUID(),
-    nome,
-    preco,
+    nome: nome,
+    preco: preco,
   };
 
   produtos.push(produto);
@@ -57,10 +51,30 @@ app.post("/produtos", (req, res) => {
   return res.json(produto);
 });
 
+app.put("/produtos/:id", (request, response) => {
+  const { id } = request.params;
+  const { nome, preco } = request.body;
+
+  const productIndex = produtos.findIndex((produto) => produto.id === id);
+  produtos[productIndex] = {
+    ...produtos[productIndex],
+    nome,
+    preco,
+  };
+
+  return response.json({
+    message: "Produto alterado com sucesso",
+  });
+});
+
 // rota de deletar produto
 app.delete("/produto/:id", (req, res) => {
-  var id = req.params.id;
-  res.json(produtos[id]);
+  var { id } = req.params.id;
+
+  const productIndex = produtos.findIndex((produto) => produto.id === id);
+  produtos.splice(productIndex, 1);
+
+  return res.json({ message: "Produto removido com sucesso" });
 });
 
 app.listen(3000, () => {
