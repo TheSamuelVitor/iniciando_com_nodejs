@@ -2,8 +2,8 @@ POST http://localhost:3000/produtos HTTP/1.1
 content-type: application/json
 
 {
-  "nome": "Caneta Lilás",
-  "preco": 3
+  "nome": "Mouse Dell",
+  "preco": 30
 }
 
 ###
@@ -16,14 +16,14 @@ GET http://localhost:3000/produto/4f31c906-87ce-424b-bf16-c096fbd7a4a7
 
 ###
 
-PUT http://localhost:3000/produtos/e8ac3453-9d08-41b6-b4e6-d33d77de6bee
+PUT http://localhost:3000/produtos/ccc43dd0-613b-4f10-bc06-0a7d1b868dc4
 Content-Type: application/json
 
 {
   "nome": "Caneta Lilás",
-  "preco": 3
+  "preco": 1.5
 }
 
 ###
 
-DELETE http://localhost:3000/produto/5234f202-4d60-488a-921e-258ae38ffaf0
+DELETE http://localhost:3000/produto/51de9c31-2729-4a7e-803d-5f78c958f325
