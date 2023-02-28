@@ -1,13 +1,12 @@
 const { response, json } = require("express");
-const express = require('express')
+const express = require("express");
 const fs = require("fs");
 const { randomUUID } = require("crypto");
 
-const produtosRouter = express.Router()
+const produtosRouter = express.Router();
 produtosRouter.use(express.json());
 
 let produtos = [];
-
 
 fs.readFile("products.json", "utf-8", (err, data) => {
   if (err) {
@@ -57,7 +56,7 @@ produtosRouter.post("/produtos", (req, res) => {
   produtos.push(produto);
 
   createProductFile();
-  return res.json(produto);
+  return res.status(201).json(produto);
 });
 
 produtosRouter.put("/produtos/:id", (request, response) => {
@@ -70,22 +69,20 @@ produtosRouter.put("/produtos/:id", (request, response) => {
     nome,
     preco,
   };
-  createProductFile()
+  createProductFile();
 
-  return response.json({
-    message: "Produto alterado com sucesso",
-  });
+  return response.status(204).end();
 });
 
 // rota de deletar produto
-produtosRouter.delete("/produto/:id", (req, res) => {
+produtosRouter.delete("/produtos/:id", (req, res) => {
   var { id } = req.params.id;
 
   const productIndex = produtos.findIndex((produto) => produto.id === id);
   produtos.splice(productIndex, 1);
-  createProductFile()
+  createProductFile();
 
-  return res.json({ message: "Produto removido com sucesso" });
+  return res.status(204).end();
 });
 
 function createProductFile() {
@@ -98,4 +95,4 @@ function createProductFile() {
   });
 }
 
-module.exports = produtosRouter
+module.exports = produtosRouter;

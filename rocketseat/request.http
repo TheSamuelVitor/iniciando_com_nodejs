@@ -12,18 +12,18 @@ GET http://localhost:3000/produtos
 
 ###
 
-GET http://localhost:3000/produto/4f31c906-87ce-424b-bf16-c096fbd7a4a7
+GET http://localhost:3000/produto/c1cfdd85-39f2-4bc8-9aca-b363ad8bf0db
 
 ###
 
-PUT http://localhost:3000/produtos/ccc43dd0-613b-4f10-bc06-0a7d1b868dc4
+PUT http://localhost:3000/produtos/c1cfdd85-39f2-4bc8-9aca-b363ad8bf0db
 Content-Type: application/json
 
 {
-  "nome": "Caneta Lilás",
+  "nome": "Mouse Dell",
   "preco": 1.5
 }
 
 ###
 
-DELETE http://localhost:3000/produto/51de9c31-2729-4a7e-803d-5f78c958f325
+DELETE http://localhost:3000/produtos/c1cfdd85-39f2-4bc8-9aca-b363ad8bf0db
