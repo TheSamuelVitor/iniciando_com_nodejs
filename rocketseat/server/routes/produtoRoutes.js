@@ -8,7 +8,7 @@ produtosRouter.use(express.json());
 
 let produtos = [];
 
-fs.readFile("products.json", "utf-8", (err, data) => {
+fs.readFile("server/data/products.json", "utf-8", (err, data) => {
   if (err) {
     console.log(err);
   } else {
@@ -86,7 +86,7 @@ produtosRouter.delete("/produtos/:id", (req, res) => {
 });
 
 function createProductFile() {
-  fs.writeFile("products.json", JSON.stringify(produtos), (err) => {
+  fs.writeFile("server/data/products.json", JSON.stringify(produtos), (err) => {
     if (err) {
       console.log(err);
     } else {
