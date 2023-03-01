@@ -31,16 +31,13 @@ app.get("/cidades/:uf", async (req, res) => {
     });
 
   estados.forEach((estado) => {
-    console.log(estado.nome);
-    estadosNome.push = estado.nome;
+    estadosNome.push(estado.nome);
   });
 
-  console.log(estadosNome);
   res.status(200).json({
     estados: estadosNome,
   });
 });
-
 
 app.listen(3000, () => {
   console.log("listening on port 3000");
