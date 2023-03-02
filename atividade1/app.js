@@ -1,6 +1,8 @@
 const express = require("express");
 const crypto = require("crypto");
 const axios = require("axios");
+const pdfkit = require("pdfkit");
+const fs = require("fs");
 
 const app = express();
 
@@ -30,12 +32,17 @@ app.get("/cidades/:uf", async (req, res) => {
       estados = response.data;
     });
 
+  const pdf = new pdfkit();
+  pdf.text(`Cidades do Estado ${estado}`);
+
   estados.forEach((estado) => {
+    pdf.text(estado.nome);
     estadosNome.push(estado.nome);
   });
 
-  res.status(200).json({
-    estados: estadosNome,
+  pdf.end();
+  pdf.pipe(fs.createWriteStream("cidades.pdf")).on("finish", () => {
+    res.status(200).download("./cidades.pdf");
   });
 });
 
