@@ -23,16 +23,10 @@ routes.get("/cidades/:letra", async (req, res) => {
       erro: "o parametro letra deve ter apenas um caracter",
     });
   } else {
-    try {
-      const cidadesNome = await service.cidadesPorLetra(letra);
-      res.status(200).json({
-        cidades: cidadesNome,
-      });
-    } catch (err) {
-      res.status(500).json({
-        erro: err.error,
-      });
-    }
+    const cidadesNome = await service.cidadesPorLetra(letra);
+    res.status(200).json({
+      cidades: cidadesNome,
+    });
   }
 });
 

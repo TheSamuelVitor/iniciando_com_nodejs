@@ -19,7 +19,7 @@ exports.cidadesPorLetra = async function (letra) {
   let cidadesNome = [];
 
   const requisicao = await axios
-    .get("https://servicodados.ibge.gov.br/api/v1/localidades/distritos")
+    .get("http://servicodados.ibge.gov.br/api/v1/localidades/distritos")
     .then((response) => {
       cidades = response.data;
     });

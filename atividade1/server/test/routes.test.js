@@ -56,15 +56,6 @@ test("should get document with city names", async function () {
   expect(requisicao.status).toBe(200);
 });
 
-test("should get document with city names", async function () {
-  const requisicao = await axios({
-    url: "http://localhost:3000/estado/ce/cidades",
-    method: "get",
-  });
-
-  expect(requisicao.status).toBe(200);
-});
-
 test("should not get document with city names", async function () {
   const requisicao = await axios({
     url: "http://localhost:3000/estado/ab/cidades",
