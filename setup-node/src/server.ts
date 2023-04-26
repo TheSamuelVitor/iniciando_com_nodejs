@@ -1,4 +1,5 @@
 import Express from "express";
+import "./controllers/UserController"
 
 const app = Express();
 
