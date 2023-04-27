@@ -1,11 +1,11 @@
 import Express from "express";
-import "./controllers/UserController"
+import "./controllers/UserController";
 
 const app = Express();
 
 app.get("/", (req, res) => {
   res.status(200).json({
-    "mensagem": "pagina principal"
+    mensagem: "pagina principal",
   });
 });
 
