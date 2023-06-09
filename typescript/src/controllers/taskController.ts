@@ -2,6 +2,13 @@ import { Task } from "../models/task";
 
 let tasks: Task[] = []
 
+/**
+ * funcao para adicionar tarefa no registro
+ *
+ * @param  {[string]} title titulo da task a ser adicionada
+ * @param  {[string]} description descricao da task a ser adicionada
+ * @return {[Task]} task adicionada 
+ */
 function addTask(title: string, description: string): Task {
 
   const task: Task = {
