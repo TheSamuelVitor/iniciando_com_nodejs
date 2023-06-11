@@ -1,5 +1,6 @@
 import { Response } from 'express';
 import { Logger } from './../models/logger';
+import { error } from 'console';
 
 /**
  * funcao para formatacao de resposta e log de resposta
