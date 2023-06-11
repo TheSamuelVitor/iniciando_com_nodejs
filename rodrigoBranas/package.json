@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --env node --detectOpenHandles"
+    "test": "jest --env node --detectOpenHandles --coverage --verbose"
   },
   "repository": {
     "type": "git",

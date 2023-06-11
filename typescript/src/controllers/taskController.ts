@@ -9,8 +9,8 @@ let tasks: Task[] = []
  * @param  {[string]} description descricao da task a ser adicionada
  * @return {[Task]} task adicionada 
  */
-function addTask(title: string, description: string): Task {
-
+exports.addTask = async function (title: string, description: string): Promise<Task> {
+  
   const task: Task = {
     id: tasks.length + 1,
     title: title,
@@ -21,5 +21,3 @@ function addTask(title: string, description: string): Task {
   tasks.push(task)
   return task;
 }
-
-export default addTask;
